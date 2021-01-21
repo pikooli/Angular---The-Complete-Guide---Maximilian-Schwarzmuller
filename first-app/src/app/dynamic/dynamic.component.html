@@ -1,0 +1,29 @@
+<p>This is to test dynamic value use, we give a string {{test}}  and a number {{numb}} </p>
+<p>Here we try a ternary expression {{numb > 0 ? "numb is bigger than 0" : "numb is smaller than 0"}} </p>
+<button class="btn btn-primary" [disabled]="!allow" (click)="clickOnButton()"> Click me </button>
+<p>{{allow}}</p>
+<p>{{buttonClick}}</p>
+
+<input type="text" (input)="getInputString($event)" class="form-control">
+<!-- two way binding -->
+<input type="text" [(ngModel)]="inputString"> 
+<p>{{inputString}}</p>
+
+<!-- ngif -->
+
+<button class="btn btn-primary" [disabled]="!allow" (click)="buttonClicked = !buttonClicked"> Click me </button>
+<p *ngIf="buttonClicked; else noServer">Button was clicked</p>
+<ng-template #noServer>
+	<p>Button was not clicked</p>
+</ng-template>
+
+
+<!-- ngStyle -->
+
+<button class="btn btn-primary" [disabled]="!allow" (click)="changeColor()"> Change color </button>
+<p [ngStyle]="{color : getColor()}">My style change when clicked on the button </p>
+
+<!-- ngClass -->
+<button class="btn btn-primary" [disabled]="!allow" (click)="switchColor = !switchColor"> switch color </button>
+<p [ngClass]="{yellow : switchColor, purple: !switchColor}">My class change when clicked </p>
+<p [ngClass]="'yellow'">i am yellow </p>

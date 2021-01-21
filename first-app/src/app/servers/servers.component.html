@@ -1,0 +1,6 @@
+<app-dynamic></app-dynamic>
+<input type="text" [(ngModel)]="serverName">
+<button (click)="onCreateServer()">Create server</button>
+<app-server *ngFor="let server of servers"></app-server>
+
+
