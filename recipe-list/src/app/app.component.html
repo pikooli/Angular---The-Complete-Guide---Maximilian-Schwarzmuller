@@ -1,0 +1,5 @@
+<div class="container">
+  <app-header (changePage)="navigate($event)"></app-header>
+  <app-recipeBook *ngIf="currentPage === 'recipes'"></app-recipeBook>
+  <app-shoppingList *ngIf="currentPage === 'shopping'"></app-shoppingList>
+</div>
