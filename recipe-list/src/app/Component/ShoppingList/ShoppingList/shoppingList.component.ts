@@ -25,6 +25,11 @@ export class ShoppingList {
       }
     );
   }
+
+  onEditItem(i: number) {
+    this.shoppingListService.startedEditing.next(i);
+  }
+
   ngOnDestroy() {
     this.igChangeSub.unsubscribe();
   }
