@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from '../Component/RecipeBook/recipe.model';
 import { RecipeService } from '../Component/RecipeBook/recipe.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, take, exhaustMap } from 'rxjs/operators';
+import { AuthService } from '../Component/Auth/auth.service';
 
 const url =
   'https://ng-course-recipe-book-806ed-default-rtdb.firebaseio.com/recipes.json';
@@ -11,7 +12,11 @@ const url =
   providedIn: 'root',
 })
 export class DataStorageService {
-  constructor(private http: HttpClient, private recipeSerice: RecipeService) {}
+  constructor(
+    private http: HttpClient,
+    private recipeSerice: RecipeService,
+    private authService: AuthService
+  ) {}
 
   storeRecipes() {
     const recipes = this.recipeSerice.getRecipes();

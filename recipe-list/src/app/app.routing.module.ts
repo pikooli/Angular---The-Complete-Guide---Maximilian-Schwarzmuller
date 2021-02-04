@@ -6,12 +6,15 @@ import { RecipeDetailComponent } from './Component/RecipeBook/RecipeDetail/recip
 import { RecipeStartComponent } from './Component/RecipeBook/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './Component/RecipeBook/recipe-edit/recipe-edit.component';
 import { RecipesResolverService } from './Component/RecipeBook/recipe.resolver.service';
+import { AuthComponent } from './Component/Auth/auth.component';
+import { AuthGuard } from './Component/Auth/auth-guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
   {
     path: 'recipes',
     component: RecipeBookComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: RecipeStartComponent, pathMatch: 'full' },
       { path: 'new', component: RecipeEditComponent },
@@ -28,6 +31,7 @@ const routes: Routes = [
     ],
   },
   { path: 'shopping', component: ShoppingList },
+  { path: 'auth', component: AuthComponent },
 ];
 
 @NgModule({
